@@ -78,10 +78,12 @@ keymap.set("n", "<C-z>", "u")
 keymap.set("n", "<C-y>", "<C-r>")
 
 -- Remap Alt + Down Arrow to copy and paste a line below
-keymap.set("n", "<M-Down>", "yyjP")
+keymap.set("n", "<C-Down>", "yyjP")
 
--- Remap Ctrl + N to Ctrl + D for multiple selections
-keymap.set("n", "<C-d>", "<C-n>")
+-- Remap multiple cursor selections
+
+-- Remap to active visual block mode
+keymap.set("n", "<leader>vb", "<C-v>")
 
 -- Remap Alt + Up Arrow to move the current line up
 keymap.set("n", "<A-Up>", ":m-2<CR>==")
@@ -90,8 +92,8 @@ keymap.set("n", "<A-Up>", ":m-2<CR>==")
 keymap.set("n", "<A-Down>", ":m+<CR>==")
 
 -- Remap Ctrl + ; to toggle commenting
-keymap.set("n", "<leader>;", ":CommentToggle<CR>")
-keymap.set("v", "<leader>;", ":CommentToggle<CR>")
+keymap.set("n", "<leader>;", "gcc")
+keymap.set("v", "<leader>;", "gcc")
 
 -- down = j, up = k to down = k, up = j
 keymap.set("n", "k", "j")
@@ -101,8 +103,8 @@ keymap.set("n", "j", "k")
 keymap.set("v", "k", "j")
 keymap.set("v", "j", "k")
 
-keymap.set("n", "P", ":!npx prettier -- --write %<CR>")
-keymap.set("n", "L", ":!npx eslint -- --fix %<CR>")
+keymap.set("n", "P", ":!npx prettier % --write<CR>")
+keymap.set("n", "L", ":!npx eslint % --fix<CR>")
 
 -- Diagnostics
 keymap.set("n", "<C-j>", function()
