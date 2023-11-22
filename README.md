@@ -24,3 +24,8 @@ Example
 
 > fd lua
 > rg lazy
+
+<br>
+<br>
+
+This repository was based on the production of [craftzdog]('https://github.com/craftzdog')

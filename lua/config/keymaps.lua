@@ -2,7 +2,7 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 
-local discipline = require("craftzdog.discipline")
+local discipline = require("rocha.discipline")
 
 discipline.cowboy()
 
@@ -112,5 +112,5 @@ keymap.set("n", "<C-j>", function()
 end, opts)
 
 keymap.set("n", "<leader>r", function()
-  require("craftzdog.utils").replaceHexWithHSL()
+  require("rocha.utils").replaceHexWithHSL()
 end)

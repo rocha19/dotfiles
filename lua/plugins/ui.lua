@@ -105,7 +105,7 @@ return {
   -- filename
   {
     "b0o/incline.nvim",
-    dependencies = { "craftzdog/solarized-osaka.nvim" },
+    dependencies = { "rocha/solarized-osaka.nvim" },
     event = "BufReadPre",
     priority = 1200,
     config = function()
