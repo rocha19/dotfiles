@@ -2,9 +2,9 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 
-local discipline = require("rocha.discipline")
+-- local discipline = require("rocha.discipline")
 
-discipline.cowboy()
+-- discipline.cowboy()
 
 local keymap = vim.keymap
 local opts = { noremap = true, silent = true }
@@ -92,8 +92,8 @@ keymap.set("n", "<A-Up>", ":m-2<CR>==")
 keymap.set("n", "<A-Down>", ":m+<CR>==")
 
 -- Remap Ctrl + ; to toggle commenting
-keymap.set("n", "<leader>;", "gcc")
-keymap.set("v", "<leader>;", "gcc")
+-- keymap.set("n", "<leader>;", "gcc")
+-- keymap.set("v", "<leader>;", "gcc")
 
 -- down = j, up = k to down = k, up = j
 keymap.set("n", "k", "j")
@@ -105,6 +105,15 @@ keymap.set("v", "j", "k")
 
 keymap.set("n", "P", ":!npx prettier % --write<CR>")
 keymap.set("n", "L", ":!npx eslint % --fix<CR>")
+
+-- Arduino
+-- keymap.set("n", "<leader>aa", "ArduinoAttach")
+-- keymap.set("n", "<leader>av", "ArduinoVerify")
+-- keymap.set("n", "<leader>au", "ArduinoUpload")
+-- keymap.set("n", "<leader>aus", "ArduinoUploadAndSerial")
+-- keymap.set("n", "<leader>as", "ArduinoSerial")
+-- keymap.set("n", "<leader>ab", "ArduinoChooseBoard")
+-- keymap.set("n", "<leader>ap", "ArduinoChooseProgrammer")
 
 -- Diagnostics
 keymap.set("n", "<C-j>", function()
