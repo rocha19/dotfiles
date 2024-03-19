@@ -3,10 +3,21 @@
 -- Add any additional options here
 
 vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
 
 vim.scriptencoding = "utf-8"
 vim.opt.encoding = "utf-8"
 vim.opt.fileencoding = "utf-8"
+
+-- Enable LazyVim auto format
+vim.g.autoformat = true
+
+-- LazyVim root dir detection
+-- Each entry can be:
+-- * the name of a detector function like `lsp` or `cwd`
+-- * a pattern or array of patterns like `.git` or `lua`.
+-- * a function with signature `function(buf) -> string|string[]`
+vim.g.root_spec = { "lsp", { ".git", "lua" }, "cwd" }
 
 vim.opt.number = true
 
@@ -20,7 +31,7 @@ vim.opt.cmdheight = 1
 vim.opt.laststatus = 2
 vim.opt.expandtab = true
 vim.opt.scrolloff = 10
-vim.opt.shell = "cmd"
+vim.opt.shell = "bash"
 vim.opt.backupskip = { "/tmp/*", "/private/tmp/*" }
 vim.opt.inccommand = "split"
 vim.opt.ignorecase = true -- Case insensitive searching UNLESS /C or capital in search

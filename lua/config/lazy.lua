@@ -1,15 +1,10 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
+  -- bootstrap lazy.nvim
+  -- stylua: ignore
+  vim.fn.system({ "git", "clone", "--filter=blob:none", "https://github.com/folke/lazy.nvim.git", "--branch=stable", lazypath })
 end
-vim.opt.rtp:prepend(lazypath)
+vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
 require("lazy").setup({
   spec = {
@@ -25,34 +20,9 @@ require("lazy").setup({
         },
       },
     },
-
-    -- Terminal
+    -- Discord
     {
       "andweeb/presence.nvim",
-    },
-
-    -- Discord
-    { "akinsho/toggleterm.nvim", version = "*", config = true },
-
-    -- Codeium
-    {
-      "Exafunction/codeium.vim",
-      event = "BufEnter",
-      config = function()
-        -- Change '<C-g>' here to any keycode you like.
-        vim.keymap.set("i", "<C-l>", function()
-          return vim.fn["codeium#Accept"]()
-        end, { expr = true })
-        vim.keymap.set("i", "<c-;>", function()
-          return vim.fn["codeium#CycleCompletions"](1)
-        end, { expr = true })
-        vim.keymap.set("i", "<c-,>", function()
-          return vim.fn["codeium#CycleCompletions"](-1)
-        end, { expr = true })
-        vim.keymap.set("i", "<c-x>", function()
-          return vim.fn["codeium#Clear"]()
-        end, { expr = true })
-      end,
     },
 
     -- import any extras modules here
@@ -67,6 +37,7 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.lang.python" },
     { import = "lazyvim.plugins.extras.lang.java" },
     { import = "lazyvim.plugins.extras.lang.tailwind" },
+    -- { import = "lazyvim.plugins.extras.coding.codeium" },
     -- { import = "lazyvim.plugins.extras.dap.core" },
     { import = "lazyvim.plugins.extras.vscode" },
     { import = "lazyvim.plugins.extras.util.mini-hipatterns" },
@@ -86,24 +57,16 @@ require("lazy").setup({
     version = false, -- always use the latest git commit
     -- version = "*", -- try installing the latest stable version for plugins that support semver
   },
-  dev = {
-    path = "~/.ghq/github.com",
-  },
-  -- install = { colorscheme = { "tokyonight", "habamax" } },
+  install = { colorscheme = { "tokyonight", "habamax" } },
   checker = { enabled = true }, -- automatically check for plugin updates
   performance = {
-    cache = {
-      enabled = true,
-      -- disable_events = {},
-    },
     rtp = {
       -- disable some rtp plugins
       disabled_plugins = {
         "gzip",
         -- "matchit",
         -- "matchparen",
-        "netrwPlugin",
-        "rplugin",
+        -- "netrwPlugin",
         "tarPlugin",
         "tohtml",
         "tutor",
@@ -111,12 +74,4 @@ require("lazy").setup({
       },
     },
   },
-  ui = {
-    custom_keys = {
-      ["<localleader>d"] = function(plugin)
-        dd(plugin)
-      end,
-    },
-  },
-  debug = false,
 })
