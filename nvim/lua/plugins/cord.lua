@@ -24,10 +24,10 @@ return {
           tooltip = "My Favorite Text Editor", -- Text to display when hovering over the editor's image
         },
         display = {
-          show_time = false, -- Display start timestamp
+          show_time = true, -- Display start timestamp
           show_repository = true, -- Display 'View repository' button linked to repository url, if any
-          show_cursor_position = false, -- Display line and column number of cursor's position
-          swap_fields = false, -- If enabled, workspace is displayed first
+          show_cursor_position = true, -- Display line and column number of cursor's position
+          swap_fields = true, -- If enabled, workspace is displayed first
           workspace_blacklist = {}, -- List of workspace names to hide
         },
         lsp = {
@@ -56,19 +56,19 @@ return {
             label = "View Repository", -- Text displayed on the button
             url = "git", -- URL where the button leads to ('git' = Git repository URL)
           },
-          -- {
-          --   label = 'View Plugin',
-          --   url = 'https://github.com/vyfor/cord.nvim',
-          -- }
+          {
+            label = "View Plugin",
+            url = "https://github.com/vyfor/cord.nvim",
+          },
         },
         assets = { -- Custom file icons
-          -- lazy = {                                 -- Vim filetype or file name or file extension = table or string (see wiki)*
-          --   name = 'Lazy',                         -- Optional override for the icon name, redundant for language types
-          --   icon = 'https://example.com/lazy.png', -- Rich Presence asset name or URL
-          --   tooltip = 'lazy.nvim',
-          --   type = 2,                              -- 0 = language, 1 = file browser, 2 = plugin manager, 3 = lsp manager; defaults to language
-          -- },
-          -- ['Cargo.toml'] = 'crates',
+          lazy = { -- Vim filetype or file name or file extension = table or string (see wiki)*
+            name = "Lazy", -- Optional override for the icon name, redundant for language types
+            icon = "https://example.com/lazy.png", -- Rich Presence asset name or URL
+            tooltip = "lazy.nvim",
+            type = 2, -- 0 = language, 1 = file browser, 2 = plugin manager, 3 = lsp manager; defaults to language
+          },
+          ["Cargo.toml"] = "crates",
         },
       })
     end,
