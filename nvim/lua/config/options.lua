@@ -31,7 +31,7 @@ vim.opt.cmdheight = 1
 vim.opt.laststatus = 2
 vim.opt.expandtab = true
 vim.opt.scrolloff = 10
-vim.opt.shell = "bash"
+vim.opt.shell = "fish"
 vim.opt.backupskip = { "/tmp/*", "/private/tmp/*" }
 vim.opt.inccommand = "split"
 vim.opt.ignorecase = true -- Case insensitive searching UNLESS /C or capital in search
@@ -42,7 +42,7 @@ vim.opt.tabstop = 2
 vim.opt.wrap = false -- No Wrap lines
 vim.opt.backspace = { "start", "eol", "indent" }
 vim.opt.path:append({ "**" }) -- Finding files - Search down into subfolders
-vim.opt.wildignore:append({ "*/node_modules/*" })
+vim.opt.wildignore:append({ "*/node_modules/*", "*/.git/*", "*/target/*" })
 vim.opt.splitbelow = true -- Put new windows below current
 vim.opt.splitright = true -- Put new windows right of current
 vim.opt.splitkeep = "cursor"
@@ -61,3 +61,46 @@ vim.cmd([[au BufNewFile,BufRead Podfile setf ruby]])
 if vim.fn.has("nvim-0.8") == 1 then
   vim.opt.cmdheight = 0
 end
+
+-- local M = {}
+--
+-- M.init_or_toggle = function()
+--   vim.cmd([[ ToggleTermToggleAll ]])
+--
+--   -- list current buffers
+--   local buffers = vim.api.nvim_list_bufs()
+--
+--   -- check if toggleterm buffer exists. If not then create one by vim.cmd [[ exe 1 . "ToggleTerm" ]]
+--   local toggleterm_exists = false
+--   for _, buf in ipairs(buffers) do
+--     local buf_name = vim.api.nvim_buf_get_name(buf)
+--     if buf_name:find("toggleterm#") then
+--       toggleterm_exists = true
+--       break
+--     end
+--   end
+--
+--   if not toggleterm_exists then
+--     vim.cmd([[ exe 1 . "ToggleTerm" ]])
+--   end
+-- end
+--
+-- return M(
+--   -- which key
+--   {
+--     t = { require("toggleterm").init_or_toggle, " Toggle Terminal(s)" },
+--   }
+-- )
+--
+function _G.set_terminal_keymaps()
+  local opts = { noremap = true }
+  vim.api.nvim_buf_set_keymap(0, "t", "<esc>", [[<C-\><C-n>]], opts)
+  vim.api.nvim_buf_set_keymap(0, "t", "jk", [[<C-\><C-n>]], opts)
+  vim.api.nvim_buf_set_keymap(0, "t", "<C-h>", [[<C-\><C-n><C-W>h]], opts)
+  vim.api.nvim_buf_set_keymap(0, "t", "<C-j>", [[<C-\><C-n><C-W>j]], opts)
+  vim.api.nvim_buf_set_keymap(0, "t", "<C-k>", [[<C-\><C-n><C-W>k]], opts)
+  vim.api.nvim_buf_set_keymap(0, "t", "<C-l>", [[<C-\><C-n><C-W>l]], opts)
+end
+
+-- if you only want these mappings for toggle term use term://*toggleterm#* instead
+vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
