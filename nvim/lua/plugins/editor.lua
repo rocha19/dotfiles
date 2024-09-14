@@ -140,7 +140,7 @@ return {
             grouped = true,
             previewer = false,
             initial_mode = "normal",
-            layout_config = { height = 40 },
+            layout_config = { height = 30, width = 80 },
           })
         end,
         desc = "Open File Browser with the path of the current buffer",
@@ -181,6 +181,8 @@ return {
               -- your custom normal mode mappings
               ["N"] = fb_actions.create,
               ["h"] = fb_actions.goto_parent_dir,
+              ["l"] = fb_actions.change_cwd,
+              ["o"] = fb_actions.open,
               ["/"] = function()
                 vim.cmd("startinsert")
               end,

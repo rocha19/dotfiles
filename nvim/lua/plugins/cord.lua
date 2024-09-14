@@ -11,7 +11,7 @@ return {
     event = "VeryLazy",
     config = function()
       require("cord").setup({
-        usercmds = true, -- Enable user commands
+        usercmds = false, -- Enable user commands
         timer = {
           enable = true, -- Enable automatically updating presence
           interval = 1500, -- Interval between presence updates in milliseconds (min 500)
@@ -28,7 +28,12 @@ return {
           show_repository = true, -- Display 'View repository' button linked to repository url, if any
           show_cursor_position = true, -- Display line and column number of cursor's position
           swap_fields = true, -- If enabled, workspace is displayed first
-          workspace_blacklist = {}, -- List of workspace names to hide
+          swap_icons = false, -- If enabled, swap icons are displayed
+          workspace_blacklist = {
+            "/home/yaogun/Workspace/teddy",
+            "/home/yaogun/Workspace/teddy/teddy-consignado-backend",
+            "/home/yaogun/Workspace/teddy/teddy-consignado-worker",
+          }, -- List of workspace names to hide
         },
         lsp = {
           show_problem_count = true, -- Display number of diagnostics problems
@@ -45,11 +50,13 @@ return {
         },
         text = {
           viewing = "Viewing {}", -- Text to display when viewing a readonly file
-          editing = "Editing {}", -- Text to display when editing a file
+          -- editing = "Editing {}", -- Text to display when editing a file
+          editing = "",
           file_browser = "Browsing files in {}", -- Text to display when browsing files (Empty string to disable)
           plugin_manager = "Managing plugins in {}", -- Text to display when managing plugins (Empty string to disable)
           lsp_manager = "Configuring LSP in {}", -- Text to display when managing LSP servers (Empty string to disable)
-          workspace = "In {}", -- Text to display when in a workspace (Empty string to disable)
+          -- workspace = "In {}", -- Text to display when in a workspace (Empty string to disable)
+          workspace = "",
         },
         buttons = {
           {
@@ -64,9 +71,9 @@ return {
         assets = { -- Custom file icons
           lazy = { -- Vim filetype or file name or file extension = table or string (see wiki)*
             name = "Lazy", -- Optional override for the icon name, redundant for language types
-            icon = "https://example.com/lazy.png", -- Rich Presence asset name or URL
+            icon = "https://cdn.icon-icons.com/icons2/3913/PNG/512/neovim_logo_icon_248392.png", -- Rich Presence asset name or URL
             tooltip = "lazy.nvim",
-            type = 2, -- 0 = language, 1 = file browser, 2 = plugin manager, 3 = lsp manager; defaults to language
+            type = 1, -- 0 = language, 1 = file browser, 2 = plugin manager, 3 = lsp manager; defaults to language
           },
           ["Cargo.toml"] = "crates",
         },

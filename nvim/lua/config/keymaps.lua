@@ -17,7 +17,7 @@ keymap.set("n", "<C-a>", "gg<S-v>G")
 --vim.api.nvim_create_user_command('W', 'w !sudo tee > /dev/null %', {})
 
 -- Disable continuations
-keymap.set("n", "<Leader>o", "o<Esc>^Da", opts)
+keymap.set("n", "<ader>o", "o<Esc>^Da", opts)
 keymap.set("n", "<Leader>O", "O<Esc>^Da", opts)
 
 -- Jumplist
@@ -25,8 +25,12 @@ keymap.set("n", "<C-m>", "<C-i>", opts)
 
 -- New tab
 keymap.set("n", "te", ":tabedit")
-keymap.set("n", "<tab>", ":tabnext<Return>", opts)
-keymap.set("n", "<s-tab>", ":tabprev<Return>", opts)
+
+-- Buffer
+keymap.set("n", "<TAB>", "<CMD>bnext<CR>")
+keymap.set("n", "<S-TAB>", "<CMD>bprevious<CR>")
+-- keymap.set("n", "<tab>", ":tabnext<Return>", opts)
+-- keymap.set("n", "<s-tab>", ":tabprev<Return>", opts)
 
 -- Create splits
 keymap.set("n", "th", ":split<CR>")
@@ -45,21 +49,87 @@ keymap.set("n", "sj", "<C-w>j")
 keymap.set("n", "sl", "<C-w>l")
 
 -- Resize window
-keymap.set("n", "<C-Left>", "<C-w><")
-keymap.set("n", "<C-Right>", "<C-w>>")
-keymap.set("n", "<C-Up>", "<C-w>+")
-keymap.set("n", "<C-Down>", "<C-w>-")
+keymap.set("n", "<C-h>", "<C-w><")
+keymap.set("n", "<C-l>", "<C-w>>")
+keymap.set("n", "<C-k>", "<C-w>+")
+keymap.set("n", "<C-j>", "<C-w>-")
+
+-- Move line
+keymap.set("n", "mj", ":m .+1<CR>==", { desc = "Move line down" })
+keymap.set("n", "mk", ":m .-2<CR>==", { desc = "Move line up" })
+
+-- Move line visual mode
+keymap.set(
+  "v",
+  "mj",
+  ":m '>+1<CR>gv=gv",
+  { desc = "Move line down in visual mode" }
+)
+keymap.set(
+  "v",
+  "mk",
+  ":m '<-2<CR>gv=gv",
+  { desc = "Move line up on visual mode" }
+)
+
+-- Search and replace lines
+keymap.set(
+  "n",
+  "ss",
+  ":s/\\v",
+  { silent = false, desc = "search and replace on line" }
+)
+keymap.set(
+  "n",
+  "SS",
+  ":%s/\\v",
+  { silent = false, desc = "search and replace in file" }
+)
+keymap.set(
+  "v",
+  "<leader><C-s>",
+  ":s/\\%V",
+  { desc = "Search only in visual selection usingb%V atom" }
+)
+keymap.set(
+  "v",
+  "<C-r>",
+  '"hy:%s/\\v<C-r>h//g<left><left>',
+  { silent = false, desc = "change selection" }
+)
+
+-- File executable
+keymap.set("n", "cx", ":!chmod +x %<cr>", { desc = "make file executable" })
+
+-- JSON file format
+keymap.set("n", "<leader>fmt", ":Pretty<CR>")
+
+-- Spelling
+keymap.set("n", "<Leader>son", ":setlocal spell spelllang=pt_br<CR>")
+
+-- PATH OPERATIONS --
+keymap.set(
+  "n",
+  "<leader>cpf",
+  ':let @+ = expand("%:p")<cr>:lua print("Copied path to: " .. vim.fn.expand("%:p"))<cr>',
+  { desc = "Copy current file name and path", silent = false }
+)
+
+-- Remap Alt + Down Arrow to copy and paste a line below
+-- keymap.set("v", "<C-Down>", "yyjP")
+
+-- Remap multiple cursor selections
+-- keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+-- keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 -- Save
-keymap.set("n", "<leader>w", "<CMD>update<CR>")
+keymap.set("n", "ww", "<CMD>update<CR>")
 -- Quit
-keymap.set("n", "<leader>q", "<CMD>q<CR>")
--- Buffer
-keymap.set("n", "<TAB>", "<CMD>bnext<CR>")
-keymap.set("n", "<S-TAB>", "<CMD>bprevious<CR>")
+keymap.set("n", "qq", "<CMD>q<CR>")
+
 -- Markdown Preview
-keymap.set("n", "<leader>m", "<CMD>MarkdownPreview<CR>")
-keymap.set("n", "<leader>mn", "<CMD>MarkdownPreviewStop<CR>")
+keymap.set("n", "<leader>mp", "<CMD>MarkdownPreview<CR>")
+keymap.set("n", "<leader>mps", "<CMD>MarkdownPreviewStop<CR>")
 
 -- VScode shortcut keys session
 --
@@ -69,36 +139,42 @@ keymap.set("n", "<C-z>", "u")
 -- Remap Ctrl+y to redo
 keymap.set("n", "<C-y>", "<C-r>")
 
--- Remap Alt + Down Arrow to copy and paste a line below
-keymap.set("v", "<C-Down>", "yyjP")
-
--- Remap multiple cursor selections
-
 -- Remap to active visual block mode
 keymap.set("n", "<leader>vb", "<C-v>")
 
 -- Remap Alt + Up Arrow to move the current line up
-keymap.set("n", "<A-Up>", ":m-2<CR>==")
+-- keymap.set("n", "<A-Up>", ":m-2<CR>==")
 
 -- Remap Alt + Down Arrow to move the current line down
-keymap.set("n", "<A-Down>", ":m+<CR>==")
+-- keymap.set("n", "<A-Down>", ":m+<CR>==")
 
 -- Remap Ctrl + ; to toggle commenting
 -- keymap.set("n", "<leader>;", "gcc")
 keymap.set("v", "<leader>;", "gcc")
 
 -- down = j, up = k to down = k, up = j
-keymap.set("n", "k", "j")
-keymap.set("n", "j", "k")
+-- keymap.set("n", "k", "j")
+-- keymap.set("n", "j", "k")
 
 -- down = j, up = k to down = k, up = j
-keymap.set("v", "k", "j")
-keymap.set("v", "j", "k")
+-- keymap.set("v", "k", "j")
+-- keymap.set("v", "j", "k")
 
 -- keymap.set("n", "P", ":!npx prettier % --write<CR>")
 -- keymap.set("n", "L", ":!npx eslint % --fix<CR>")
 
+-- IncRename
+keymap.set("n", "<leader>rn", ":IncRename ")
+
+-- MiniMap
+keymap.set("n", "<leader>mo", "<CMD>Neominimap on<CR>")
+keymap.set("n", "<leader>mc", "<CMD>Neominimap off<CR>")
+keymap.set("n", "<leader>mt", "<CMD>Neominimap refresh<CR>")
+
+-- DB View
+keymap.set("n", "<leader>db", "<CMD>DBUIToggle<CR>")
+
 -- Diagnostics
-keymap.set("n", "<C-j>", function()
+keymap.set("n", "<leader><C-j>", function()
   vim.diagnostic.goto_next()
 end, opts)

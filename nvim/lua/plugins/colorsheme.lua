@@ -23,11 +23,11 @@ return {
         floats = "transparent",
       },
       on_colors = function(colors)
-        colors.hint = colors.orange
+        colors.hint = "#c2410c"
         colors.error = "#ff0000"
         colors.red = "#ea6962"
         colors.red1 = "#a14242"
-        colors.green = "#90897F" -- "#6D6559" String
+        colors.green = "#fbf1c7" -- #90897F" -- "#6D6559" String
         colors.green1 = "#89b482"
         colors.green2 = "#89b400"
         colors.blue = "#7daea3"
@@ -37,12 +37,14 @@ return {
         colors.blue5 = "#31b1e0"
         colors.blue6 = "#B26183"
         colors.blue7 = "#70f2f2"
-        colors.border = "#15161e"
+        colors.border = "#db2777" -- " "#15161e"
         colors.border_highlight = "#27a1b9"
         colors.comment = "#505050"
         colors.cyan = "#81A497"
         colors.bg_highlight = "#292929"
         colors.fg_gutter = "#2e3715"
+        colors.text = "#0f0ff"
+        colors.white = "#0f0ff"
         colors.magenta = "#a9b665" -- Function, Class
       end,
       -- on_highlights = function(hl, c)
@@ -51,6 +53,7 @@ return {
       -- end,
     },
   },
+
   --[[
   {
     "catppuccin/nvim",

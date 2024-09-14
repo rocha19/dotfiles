@@ -18,7 +18,7 @@ focused_match = { foreground = "CellBackground", background = "CellForeground" }
 
 # Default colors
 [colors.primary]
-background = '#181A1B' # '#242728' 
+background = '#1c1917' #'#181A1B' # '#242728' 
 foreground = '#ebdbb2'
 # foreground = '#e5c49e'
 
@@ -72,23 +72,23 @@ persistent_logging = false
 render_timer = false
 
 [font]
-size = 12.0
-
-# [font.bold]
-# family = "CaskaydiaCove Nerd Font"
-# style = "Medium"
+size = 10.0
 
 [font.glyph_offset]
 x = 0
 y = 0
 
-# [font.italic]
-# family = "CaskaydiaCove Nerd Font"
-# style = "Light Italic"
+[font.bold]
+family = "CaskaydiaCove Nerd Font"
+style = "Bold"
+
+[font.italic]
+family = "CaskaydiaCove Nerd Font"
+style = "Light Italic"
 
 [font.normal]
 family = "CaskaydiaCove Nerd Font"
-style = "Light"
+style = "Regular"
 
 [font.offset]
 x = 0
@@ -113,6 +113,23 @@ mods = "Control"
 # key = "C"
 # mods = "Alt|Shift"
 # chars = "\u000ff"
+
+[[keyboard.bindings]]
+action = "ScrollPageUp"
+key = "PageUp"
+mods = "Alt"
+
+[[keyboard.bindings]]
+action = "ScrollPageDown"
+key = "PageDown"
+mods = "Alt"
+
+# ScrollPageUp
+# ScrollPageDown
+# ScrollLineUp
+# ScrollLineDown
+# ScrollToTop
+# ScrollToBottom
 
 [[keyboard.bindings]]
 action = "Quit"
@@ -415,15 +432,15 @@ history = 3000
 multiplier = 3
 
 [selection]
-save_to_clipboard = false
+save_to_clipboard = true
 semantic_escape_chars = ",│`|:\"' ()[]{}<>"
 
 [shell]
 program = "/usr/bin/fish"
 
 [window]
-opacity = 0.6
-dynamic_padding = false
+opacity = 0.90
+dynamic_padding = true
 startup_mode = "Windowed"
 
 [window.dimensions]

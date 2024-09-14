@@ -1,5 +1,6 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
+SETUVAR --export JAVA_HOME:/home/yaogun/\x2elocal/lib/jvm/jdk\x2d17
 SETUVAR --export NVM_DIR:/home/yaogun/\x2envm
 SETUVAR __fish_initialized:3400
 SETUVAR fish_color_autosuggestion:555\x1ebrblack
@@ -30,4 +31,5 @@ SETUVAR fish_pager_color_description:B3A06D\x1eyellow
 SETUVAR fish_pager_color_prefix:normal\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
 SETUVAR fish_pager_color_selected_background:\x2dr
-SETUVAR fish_user_paths:/home/yaogun/\x2espicetify
+SETUVAR --export fish_tmux_config:/home/yaogun/\x2etmux\x2econf
+SETUVAR --export fish_user_paths:/home/yaogun/\x2elocal/lib/jvm/java\x2d17\x2dopenjdk\x2damd64/bin\x1e/home/yaogun/\x2envm/versions/node/v20\x2e16\x2e0/bin\x1e/home/yaogun/\x2ebun/bin\x1e/home/yaogun/\x2eexternal/Projects/esp32s3/xtensa\x2desp32s3\x2dcompilers/bin\x1e/home/yaogun/\x2espicetify

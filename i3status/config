@@ -1,0 +1,79 @@
+general {
+    output_format = "i3bar"
+    colors = true
+    markup = pango
+    interval = 5
+    color_good = "#509A7B"
+    color_degraded = "#F1FA8C"
+    color_bad = "#bF5555"
+}
+
+order += "load"
+order += "cpu_temperature 0"
+order += "cpu_usage"
+order += "memory"
+order += "ethernet enp2s0"
+order += "wireless wlp2s0"
+# order += "bluetooth"
+order += "volume master"
+order += "battery 0"
+order += "time" 
+
+#               
+
+load { 
+    format = "<span background='#b08500'>    </span><span background='#bfbaac'>  %1min Load  </span>"
+} 
+ 
+cpu_temperature 0 { 
+    format = "<span background='#a12f2c'>    </span><span background='#bfbaac'>  %degrees °C  </span>"
+    path = "/sys/class/thermal/thermal_zone0/temp"
+} 
+ 
+cpu_usage { 
+    format = "<span background='#ffb86c'>    </span><span background='#bfbaac'>  %usage  </span>"
+} 
+ 
+memory { 
+    format = "<span background='#ff79c6'>    </span><span background='#bfbaac'>  %used/%total  </span>"
+}
+
+ethernet enp2s0 {
+    format_up = "<span background='#00bfae'>    </span><span background='#bfbaac'>  %ip  </span>"
+    format_down = "<span background='#af4444'>    </span><span background='#bfbaac'>  Disconnected  </span>"
+}
+
+wireless wlp2s0 {
+    format_up = "<span background='#289c93'>    </span><span background='#bfbaac'>  %essid  </span>"
+    format_down = "<span background='#289c93'>    </span><span background='#bfbaac'>  Disconnected  </span>"
+}
+
+# bluetooth {
+#    format_up = "<span background='#8be9fd'>    </span><span background='#bfbaac'>  %name  </span>"
+#    format_down = "<span background='#ff5555'>    </span><span background='#bfbaac'>  Not Available  </span>"
+# }
+
+volume master {
+    format = "<span background='#696ebf'>    </span><span background='#bfbaac'>  %volume  </span>"
+    format_muted = "<span background='#696ebf'>    </span><span background='#bfbaac'>  Muted  </span>"
+    device = "default"
+    mixer = "Master"
+    mixer_idx = 0
+}
+
+battery 0 {
+    last_full_capacity = true
+    format = "<span background='#819400'>    </span><span background='#bfbaac'>  %percentage  </span>"
+    format_down = "No Battery"
+    status_chr = ""
+    status_bat = ""
+    status_unk = ""
+    status_full = ""
+    path = "/sys/class/power_supply/BAT%d/uevent"
+    low_threshold = 10
+    integer_battery_capacity = true
+}
+
+time {
+    format = "<span background='#2587cc'>    </span><span background='#bfbaac'>  %b %d at %H:%M  </span>"
+}
