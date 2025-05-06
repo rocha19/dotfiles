@@ -26,9 +26,9 @@ return {
     "ThePrimeagen/refactoring.nvim",
     keys = {
       {
-        "<leader>r",
+        "<leader>rm",
         function()
-          require("refactoring").select_refactor()
+          require("refactoring").select_refactor(nil)
         end,
         mode = "v",
         noremap = true,
@@ -60,7 +60,7 @@ return {
     "monaqa/dial.nvim",
     -- stylua: ignore
     keys = {
-      { "<C-a>", function() return require("dial.map").inc_normal() end, expr = true, desc = "Increment" },
+      { "<C-q>", function() return require("dial.map").inc_normal() end, expr = true, desc = "Increment" },
       { "<C-x>", function() return require("dial.map").dec_normal() end, expr = true, desc = "Decrement" },
     },
     config = function()
@@ -80,7 +80,9 @@ return {
 
   {
     "simrat39/symbols-outline.nvim",
-    keys = { { "<leader>cs", "<cmd>SymbolsOutline<cr>", desc = "Symbols Outline" } },
+    keys = {
+      { "<leader>cs", "<cmd>SymbolsOutline<cr>", desc = "Symbols Outline" },
+    },
     cmd = "SymbolsOutline",
     opts = {
       position = "right",

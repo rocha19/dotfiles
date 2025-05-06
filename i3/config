@@ -13,31 +13,36 @@ font pango:CaskaydiaCove Nerd Font Regular 10
 floating_modifier $super
 
 # autostart
-exec --no-startup-id hsetroot -center ~/.wallpaper.png
+# exec --no-startup-id hsetroot -center ~/.wallpaper.png
+exec_always --no-startup-id feh --randomize --bg-scale ~/Imagens
 exec --no-startup-id xfce4-clipman
 # xfce4-power-manager-settings
 exec --no-startup-id xfce4-power-manager
-exec --no-startup-id blueman-applet
+exec --no-startup-id blueman-apple
 exec --no-startup-id flatpak run io.github.mimbrero.WhatsAppDesktop
 exec --no-startup-id flatpak run org.mozilla.Thunderbird
-exec --no-startup-id flatpak run org.telegram.desktop
-exec --no-startup-id discord
+# exec --no-startup-id flatpak run org.telegram.desktop
+# exec --no-startup-id discord
+# sudo pacman -S pasystray
+exec --no-startup-id pasystray --always-notify
 # sudo pacman -Sy networkmanager  nm-connection-editor networkmanager-vpnc  networkmanager-pptp networkmanager-openvpn networkmanager-openconnect 
 # systemctl enable NetworkManager.service 
 # systemctl start NetworkManager.service
 exec --no-startup-id nm-applet
 # monitor
 exec --no-startup-id xrandr --output HDMI-1-1 --auto --right-of eDP-1
+# exec_always --no-startup-id xrandr --output HDMI-1-0 --mode 1920x1080 --output eDP-1 --off
 # # xrandr --output HDMI-1 --mode 1920x1080 --right-of eDP-1
 # exec_always --no-startup-id xrandr --output HDMI-1-1 --mode 1920x1080 --right-of eDP-1
 # apparence
 exec --no-startup-id xrdb ~/.Xresources
+# exec_always --no-startup-id ./live_wallpaper.sh -anwb ~/Vídeos/Hidamari/28236-368501609.mp4
 # exec --no-startup-id lxappearance
 # picom (transparency)
-exec_always picom -f
+exec_always --no-startup-id picom --config ~/.config/picom/picom.conf -f 
 # polybar
 # exec_always killall polybar
-# exec_always --no-startup-id ~/.config/polybar/launch.sh --cuts
+# exec_always --no-startup-id ~/.config/polybar/launch.sh --shapes
 
 # start a terminal
 bindsym $super+Return exec i3-sensible-terminal
@@ -164,47 +169,51 @@ bindsym $super+Control l resize grow width 5 px or 5 ppt
 
 # panel
 bar {
-  # status_command i3blocks
-	status_command i3status
+  # i3bar_command i3bar -t
+  status_command i3blocks
+	# status_command i3status
 	position top
-	workspace_min_width 24
+	# workspace_min_width 24
 	padding 2px 8px 2px 8px
 	strip_workspace_numbers yes
 	i3bar_command i3bar --transparency
-  # tray_output none
+  # tray_output eDP-1
+  tray_output HDMI-1-1
 
-	colors {
-	background #141c21
-	statusline #141c21
-	separator #141c21
-
-	# colour of border, background, and text
-	focused_workspace #141c21 #d12f2c #93a1a1
-	active_workspace #141c21 #141c21 #93a1a1
-	inactive_workspace #141c21 #141c21 #93a1a1
-	urgent_workspace #141c21 #b08500 #93a1a1
-	}
+	# colors {
+	# background #141c21
+	# statusline #141c21
+	# separator #141c21
+	#
+	# # colour of border, background, and text
+	# focused_workspace #141c21 #d12f2c #93a1a1
+	# active_workspace #141c21 #141c21 #93a1a1
+	# inactive_workspace #141c21 #141c21 #93a1a1
+	# urgent_workspace #141c21 #b08500 #93a1a1
+	# }
 }
 
 # Active flatpak GTK Theme
 # flatpak install flathub org.gtk.Gtk3theme.Matcha-dark-aliz
-# flatpak override --user --env=GTK_THEME=Matcha-dark-aliz org.mozilla.firefox
+# fatpak override --user --env=GTK_THEME=Matcha-dark-aliz org.mozilla.firefox
 # sudo su
 # flatpak override --filesystem=$HOME/.themes org.mozilla.firefox
 # flatpak override --filesystem=/usr/share/themes org.mozilla.firefox
 # reboot
 # colour of border, background, text, indicator, and child_border
-client.focused #d12f2c #263640 #93a1a1 #696ebf #2587cc1
+client.focused #d12f2c #263640 #93a1a1 #fcf000 #93a1a1
 client.focused_inactive #263640 #b08500 #93a1a1 #263640 #263640
 client.unfocused #263640 #b08500 #93a1a1 #263640 #263640
 client.urgent #263640 #b08500 #93a1a1 #263640 #263640
 client.placeholder #263640 #b08500 #93a1a1 #263640 #263640
 client.background #263640
 
+# client.focused final:#fc008f
+
 # window rules, you can find the window class using xprop
 for_window [class=Eog|Sxiv|feh|mpv|Vlc|File-roller|Xarchiver] floating enable
 for_window [class=Eog|Sxiv|feh|mpv|Vlc|File-roller|Xarchiver] focus
-for_window [class=".*"] border pixel 2
+for_window [class=".*"] border pixel 1
 hide_edge_borders smart
-gaps inner 8
+gaps inner 10
 smart_gaps on

@@ -17,7 +17,7 @@ keymap.set("n", "<C-a>", "gg<S-v>G")
 --vim.api.nvim_create_user_command('W', 'w !sudo tee > /dev/null %', {})
 
 -- Disable continuations
-keymap.set("n", "<ader>o", "o<Esc>^Da", opts)
+keymap.set("n", "<leader>o", "o<Esc>^Da", opts)
 keymap.set("n", "<Leader>O", "O<Esc>^Da", opts)
 
 -- Jumplist
@@ -51,23 +51,23 @@ keymap.set("n", "sl", "<C-w>l")
 -- Resize window
 keymap.set("n", "<C-h>", "<C-w><")
 keymap.set("n", "<C-l>", "<C-w>>")
-keymap.set("n", "<C-k>", "<C-w>+")
 keymap.set("n", "<C-j>", "<C-w>-")
+keymap.set("n", "<C-k>", "<C-w>+")
 
 -- Move line
-keymap.set("n", "mj", ":m .+1<CR>==", { desc = "Move line down" })
-keymap.set("n", "mk", ":m .-2<CR>==", { desc = "Move line up" })
+keymap.set("n", "<C-Up>", ":m .+1<CR>==", { desc = "Move line down" })
+keymap.set("n", "<C-Down>", ":m .-2<CR>==", { desc = "Move line up" })
 
 -- Move line visual mode
 keymap.set(
   "v",
-  "mj",
+  "<C-Up>",
   ":m '>+1<CR>gv=gv",
   { desc = "Move line down in visual mode" }
 )
 keymap.set(
   "v",
-  "mk",
+  "<C-Down>",
   ":m '<-2<CR>gv=gv",
   { desc = "Move line up on visual mode" }
 )
@@ -173,6 +173,41 @@ keymap.set("n", "<leader>mt", "<CMD>Neominimap refresh<CR>")
 
 -- DB View
 keymap.set("n", "<leader>db", "<CMD>DBUIToggle<CR>")
+
+-- TERMINAL
+-- Sair do terminal com Ctrl+Q mesmo no modo insert
+vim.keymap.set(
+  "t",
+  "<Esc><Esc>",
+  "<C-\\><C-n>",
+  { desc = "Sair do modo terminal" }
+)
+
+-- Navegar para outras janelas a partir do terminal
+vim.keymap.set(
+  "t",
+  "<C-h>",
+  "<Cmd>wincmd h<CR>",
+  { desc = "Mover para janela esquerda" }
+)
+vim.keymap.set(
+  "t",
+  "<C-j>",
+  "<Cmd>wincmd j<CR>",
+  { desc = "Mover para janela abaixo" }
+)
+vim.keymap.set(
+  "t",
+  "<C-k>",
+  "<Cmd>wincmd k<CR>",
+  { desc = "Mover para janela acima" }
+)
+vim.keymap.set(
+  "t",
+  "<C-l>",
+  "<Cmd>wincmd l<CR>",
+  { desc = "Mover para janela direita" }
+)
 
 -- Diagnostics
 keymap.set("n", "<leader><C-j>", function()

@@ -8,7 +8,13 @@ return {
         "<leader>tf",
         function()
           local count = vim.v.count1
-          require("toggleterm").toggle(count, 0, LazyVim.root.get(), "float", "Fish Shell")
+          require("toggleterm").toggle(
+            count,
+            0,
+            LazyVim.root.get(),
+            "float",
+            "Fish Shell"
+          )
         end,
         desc = "ToggleTerm (float root_dir)",
       },
@@ -16,7 +22,13 @@ return {
         "<leader>th",
         function()
           local count = vim.v.count1
-          require("toggleterm").toggle(count, 5, LazyVim.root.get(), "horizontal", "Fish Shell")
+          require("toggleterm").toggle(
+            count,
+            5,
+            LazyVim.root.get(),
+            "horizontal",
+            "Fish Shell"
+          )
         end,
         desc = "ToggleTerm (horizontal root_dir)",
       },
@@ -24,7 +36,13 @@ return {
         "<leader>tv",
         function()
           local count = vim.v.count1
-          require("toggleterm").toggle(count, vim.o.columns * 0.3, LazyVim.root.get(), "vertical", "Fish Shell")
+          require("toggleterm").toggle(
+            count,
+            vim.o.columns * 0.3,
+            LazyVim.root.get(),
+            "vertical",
+            "Fish Shell"
+          )
         end,
         desc = "ToggleTerm (vertical root_dir)",
       },
@@ -41,14 +59,26 @@ return {
       {
         "<leader>tt",
         function()
-          require("toggleterm").toggle(1, 100, LazyVim.root.get(), "tab", "Fish Shell")
+          require("toggleterm").toggle(
+            1,
+            100,
+            LazyVim.root.get(),
+            "tab",
+            "Fish Shell"
+          )
         end,
         desc = "ToggleTerm (tab root_dir)",
       },
       {
         "<leader>tT",
         function()
-          require("toggleterm").toggle(1, 100, vim.loop.cwd(), "tab", "Fish Shell")
+          require("toggleterm").toggle(
+            1,
+            100,
+            vim.loop.cwd(),
+            "tab",
+            "Fish Shell"
+          )
         end,
         desc = "ToggleTerm (tab cwd_dir)",
       },
@@ -86,9 +116,9 @@ return {
         -- see :h nvim_open_win for details on borders however
         -- the 'curved' border is a custom border type
         -- not natively supported but implemented in this plugin.
-        border = "single" or "double" or "shadow" or "curved",
-        width = 60,
-        height = 20,
+        border = "curved", -- "single" or "double" or "shadow" or "curved",
+        width = 80,
+        height = 30,
         winblend = 3,
         highlights = {
           border = "Normal",
@@ -96,7 +126,7 @@ return {
         },
       },
       winbar = {
-        enabled = false,
+        enabled = true,
         name_formatter = function(term) --  term: Terminal
           return term.name
         end,

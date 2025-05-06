@@ -1,0 +1,200 @@
+[
+  {
+    "border": "normal",
+    "floating": "auto_off",
+    "layout": "splitv",
+    "marks": [],
+    "percent": 0.258333333333333,
+    "type": "con",
+    "nodes": [
+      {
+        "border": "normal",
+        "floating": "auto_off",
+        "layout": "splith",
+        "marks": [],
+        "percent": 0.5,
+        "type": "con",
+        "nodes": [
+          {
+            "title": "Consig Data",
+            "border": "pixel",
+            "current_border_width": 1,
+            "floating": "auto_off",
+            "geometry": {
+              "height": 658,
+              "width": 730,
+              "x": 0,
+              "y": 0
+            },
+            "marks": [],
+            "name": "~",
+            "percent": 0.5,
+            "swallows": [
+              {
+                "class": "^Alacritty$"
+              }
+            ],
+            "type": "con"
+          },
+          {
+            "title": "Simulation",
+            "border": "pixel",
+            "current_border_width": 1,
+            "floating": "auto_off",
+            "geometry": {
+              "height": 658,
+              "width": 730,
+              "x": 0,
+              "y": 0
+            },
+            "marks": [],
+            "name": "~",
+            "percent": 0.5,
+            "swallows": [
+              {
+                "class": "^Alacritty$"
+              }
+            ],
+            "type": "con"
+          }
+        ]
+      },
+      {
+        "border": "normal",
+        "floating": "auto_off",
+        "layout": "splitv",
+        "marks": [],
+        "percent": 0.5,
+        "type": "con",
+        "nodes": [
+          {
+            "title": "Worker",
+            "border": "pixel",
+            "current_border_width": 1,
+            "floating": "auto_off",
+            "geometry": {
+              "height": 658,
+              "width": 730,
+              "x": 0,
+              "y": 0
+            },
+            "marks": [],
+            "name": "~",
+            "percent": 0.5,
+            "swallows": [{ "class": "^Alacritty$" }],
+            "type": "con"
+          },
+          {
+            "title": "Backend",
+            "border": "pixel",
+            "current_border_width": 1,
+            "floating": "auto_off",
+            "geometry": {
+              "height": 658,
+              "width": 730,
+              "x": 0,
+              "y": 0
+            },
+            "marks": [],
+            "name": "~",
+            "percent": 0.5,
+            "swallows": [
+              {
+                "class": "^Alacritty$"
+              }
+            ],
+            "type": "con"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "VI - Editor Master",
+    "border": "pixel",
+    "current_border_width": 1,
+    "floating": "auto_off",
+    "geometry": {
+      "height": 658,
+      "width": 730,
+      "x": 0,
+      "y": 0
+    },
+    "marks": [],
+    "name": "i3-save-tree --works ~",
+    "percent": 0.483333333333333,
+    "swallows": [{ "class": "^Alacritty$" }],
+    "type": "con"
+  },
+  {
+    "border": "normal",
+    "floating": "auto_off",
+    "layout": "splitv",
+    "marks": [],
+    "percent": 0.258333333333333,
+    "type": "con",
+    "nodes": [
+      {
+        "border": "normal",
+        "floating": "auto_off",
+        "layout": "splith",
+        "marks": [],
+        "percent": 0.5,
+        "type": "con",
+        "nodes": [
+          {
+            "title": "Frontend",
+            "border": "pixel",
+            "current_border_width": 1,
+            "floating": "auto_off",
+            "geometry": {
+              "height": 658,
+              "width": 730,
+              "x": 0,
+              "y": 0
+            },
+            "marks": [],
+            "name": "~",
+            "percent": 0.5,
+            "swallows": [{ "class": "^Alacritty$" }],
+            "type": "con"
+          },
+          {
+            "title": "Podman",
+            "border": "pixel",
+            "current_border_width": 1,
+            "floating": "auto_off",
+            "geometry": {
+              "height": 658,
+              "width": 730,
+              "x": 0,
+              "y": 0
+            },
+            "marks": [],
+            "name": "~",
+            "percent": 0.5,
+            "swallows": [{ "class": "^Alacritty$" }],
+            "type": "con"
+          }
+        ]
+      },
+      {
+        "title": "Alacritty",
+        "border": "pixel",
+        "current_border_width": 1,
+        "floating": "auto_off",
+        "geometry": {
+          "height": 658,
+          "width": 730,
+          "x": 0,
+          "y": 0
+        },
+        "marks": [],
+        "name": "~",
+        "percent": 0.5,
+        "swallows": [{ "class": "^Alacritty$" }],
+        "type": "con"
+      }
+    ]
+  }
+]

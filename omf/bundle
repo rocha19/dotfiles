@@ -3,5 +3,7 @@ package https://github.com/fabioantunes/fish-nvm
 theme agnoster
 theme bobthefish
 theme default
+theme https://github.com/reitzig/theme-dmorrell.git
 theme neolambda
+theme slacker
 theme slavic-cat

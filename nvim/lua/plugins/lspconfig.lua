@@ -2,6 +2,8 @@ return {
   {
     "williamboman/mason.nvim",
     opts = function(_, opts)
+      -- opts.exclude = { "vtsls" }
+
       vim.list_extend(opts.ensure_installed, {
         "stylua",
         "selene",
@@ -11,47 +13,53 @@ return {
         "tailwindcss-language-server",
         "typescript-language-server",
         "css-lsp",
+        "biome",
         "shellcheck",
         "shfmt",
-        -- "bash-language-server",
         "clangd",
         "cmakelang",
-        -- "cmakelint",
-        -- "codelldb",
         "css-lsp",
         "docker-compose-language-service",
         "dockerfile-language-server",
-        -- "dot-language-server",
-        -- "eslint-lsp",
-        "biome",
-        -- "vtsls",
         "html-lsp",
-        -- "htmlhint",
         "htmx-lsp",
-        -- "jdtls",
-        -- "json-lsp jsonls",
-        -- "markdown-toc",
-        -- "markdownlint",
-        -- "markdownlint-cli2",
-        -- "marksman",
         "neocmakelsp",
-        -- "nginx-language-server",
-        -- "opencl-language-server",
-        -- "prettier",
-        -- "prettierd",
-        -- "prisma-language-server",
-        -- "pyright",
-        -- "ruff",
-        -- "ruff-lsp",
         "rust-analyzer",
         "taplo",
         "codelldb",
-        "tailwindcss-language-server",
-        "typescript-language-server",
         "yaml-language-server",
       })
+
+      -- opts.ensure_installed = vim.tbl_filter(function(server)
+      --   return server ~= "vtsls"
+      -- end, opts.ensure_installed or {})
+
+      -- Opcional: log para depuração
+      -- print(vim.inspect(opts.ensure_installed))
     end,
   },
+
+  -- "bash-language-server",
+  -- "cmakelint",
+  -- "codelldb",
+  -- "dot-language-server",
+  -- "eslint-lsp",
+  -- "vtsls",
+  -- "htmlhint",
+  -- "jdtls",
+  -- "json-lsp jsonls",
+  -- "markdown-toc",
+  -- "markdownlint",
+  -- "markdownlint-cli2",
+  -- "marksman",
+  -- "nginx-language-server",
+  -- "opencl-language-server",
+  -- "prettier",
+  -- "prettierd",
+  -- "prisma-language-server",
+  -- "pyright",
+  -- "ruff",
+  -- "ruff-lsp",
 
   {
     "neovim/nvim-lspconfig",
@@ -111,6 +119,17 @@ return {
         },
         tsserver = {
           root_dir = function(...)
+            -- require("lspconfig").tsserver.setup({
+            -- on_attach = function(client, bufnr)
+            -- Desabilitar `vtsls` e priorizar o `tsserver`
+            -- if client.name == "vtsls" then
+            --   client.stop() -- Parar o cliente `vtsls`
+            -- end
+            -- end,
+            -- filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
+            -- cmd = { "typescript-language-server", "--stdio" },
+            -- })
+
             return require("lspconfig.util").root_pattern(".git")(...)
           end,
           single_file_support = false,

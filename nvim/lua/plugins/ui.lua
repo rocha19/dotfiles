@@ -56,7 +56,7 @@ return {
   {
     "rcarriga/nvim-notify",
     opts = {
-      timeout = 5000,
+      timeout = 1000,
     },
   },
 
@@ -133,7 +133,7 @@ return {
     opts = {
       options = {
         -- globalstatus = false,
-        theme = "tokyonight", -- solarized_dark,
+        theme = "default", -- "tokyonight", -- solarized_dark,
       },
     },
   },
@@ -202,8 +202,8 @@ return {
                                          
 ]]
 
-      logo = string.rep("\n", 8) .. logo .. "\n\n"
-      opts.config.header = vim.split(logo, "\n")
+      -- logo = string.rep("\n", 8) .. logo .. "\n\n"
+      -- opts.config.header = vim.split(logo, "\n")
     end,
   },
 }

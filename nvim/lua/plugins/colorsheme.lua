@@ -1,5 +1,55 @@
 return {
   {
+    "aliqyan-21/darkvoid.nvim",
+    config = function()
+      return {
+        transparent = true,
+        glow = true,
+      }
+    end,
+  },
+
+  {
+    "zootedb0t/citruszest.nvim",
+    lazy = false,
+    priority = 1000,
+  },
+
+  -- {
+  --   "maxmx03/fluoromachine.nvim",
+  --   lazy = false,
+  --   priority = 1000,
+  --   config = function()
+  --     local fm = require("fluoromachine")
+  --
+  --     fm.setup({
+  --       glow = true,
+  --       theme = "fluoromachine",
+  --       transparent = true,
+  --       -- colors = function(_, color)
+  --       -- local darken = color.darken
+  --       -- local lighten = color.lighten
+  --       -- local blend = color.blend
+  --       -- local shade = color.shade
+  --       -- local tint = color.tint
+  --       -- return {
+  --       -- bg = "#190920",
+  --       -- bgdark = darken("#190920", 20),
+  --       -- cyan = "#49eaff",
+  --       -- red = "#ff1e34",
+  --       -- yellow = "#ffe756",
+  --       -- orange = "#f38e21",
+  --       -- pink = "#ffadff",
+  --       -- purple = "#9544f7",
+  --       --   }
+  --       -- end,
+  --     })
+  --
+  --     vim.cmd.colorscheme("fluoromachine")
+  --   end,
+  -- },
+
+  {
     "craftzdog/solarized-osaka.nvim",
     lazy = true,
     priority = 1000,
@@ -23,29 +73,74 @@ return {
         floats = "transparent",
       },
       on_colors = function(colors)
-        colors.hint = "#c2410c"
+        colors.hint = "#404040"
         colors.error = "#ff0000"
-        colors.red = "#ea6962"
-        colors.red1 = "#a14242"
-        colors.green = "#fbf1c7" -- #90897F" -- "#6D6559" String
-        colors.green1 = "#89b482"
-        colors.green2 = "#89b400"
-        colors.blue = "#7daea3"
-        colors.blue0 = "#79ad9f"
-        colors.blue1 = "#F5BC36"
-        colors.blue2 = "#70a4ff"
-        colors.blue5 = "#31b1e0"
-        colors.blue6 = "#B26183"
-        colors.blue7 = "#70f2f2"
-        colors.border = "#db2777" -- " "#15161e"
-        colors.border_highlight = "#27a1b9"
-        colors.comment = "#505050"
-        colors.cyan = "#81A497"
-        colors.bg_highlight = "#292929"
-        colors.fg_gutter = "#2e3715"
-        colors.text = "#0f0ff"
-        colors.white = "#0f0ff"
-        colors.magenta = "#a9b665" -- Function, Class
+        colors.red = "#6b6e6b"
+        colors.red1 = "#595c59"
+        colors.green = "#cfd1cf"
+        colors.green1 = "#dbe1db"
+        colors.green2 = "#e7f1e7"
+        colors.blue = "#8a9a8a"
+        colors.blue0 = "#6f7a6f"
+        colors.blue1 = "#b7c2b7"
+        colors.blue2 = "#c9d1c9"
+        colors.blue5 = "#dae1da"
+        colors.blue6 = "#eaf1ea"
+        colors.blue7 = "#8b9a8b"
+        colors.border = "#98a098"
+        colors.border_highlight = "#404040"
+        colors.comment = "#4b5a4b"
+        colors.cyan = "#7e8f7e"
+        -- colors.bg_highlight = "#b9c0b9"
+        colors.fg_gutter = "#657065"
+        colors.text = "#3e4a3e"
+        colors.white = "#a9b2a9"
+        colors.magenta = "#dce6dc"
+        colors.magenta2 = "#dce6e4"
+
+        --[[
+          fg = "#c0c0c0",
+          bg = "#1c1c1c",
+          cursor = "#bdfe58",
+          line_nr = "#404040",
+          visual = "#303030",
+          comment = "#585858",
+          string = "#d1d1d1",
+          func = "#e1e1e1",
+          kw = "#f1f1f1",
+          identifier = "#b1b1b1",
+          type = "#a1a1a1",
+          search_highlight = "#1bfd9c",
+          operator = "#1bfd9c",
+          bracket = "#e6e6e6",
+          preprocessor = "#4b8902",
+          bool = "#66b2b2",
+          constant = "#b2d8d8",
+        --]]
+
+        -- colors.hint = "#c2410c"
+        -- colors.error = "#ff0000"
+        -- colors.red = "#ea6962"
+        -- colors.red1 = "#a14242"
+        -- colors.green = "#fbf1c7" -- #90897F" -- "#6D6559" String
+        -- colors.green1 = "#89b482"
+        -- colors.green2 = "#89b400"
+        -- colors.blue = "#7daea3"
+        -- colors.blue0 = "#79ad9f"
+        -- colors.blue1 = "#F5BC36"
+        -- colors.blue2 = "#70a4ff"
+        -- colors.blue5 = "#31b1e0"
+        -- colors.blue6 = "#B26183"
+        -- colors.blue7 = "#70f2f2"
+        -- colors.border = "#db2777" -- " "#15161e"
+        -- colors.border_highlight = "#27a1b9"
+        -- colors.comment = "#505050"
+        -- colors.cyan = "#81A497"
+        -- colors.bg_highlight = "#292929"
+        -- colors.fg_gutter = "#2e3715"
+        -- colors.text = "#0f0ff"
+        -- colors.white = "#0f0ff"
+        -- colors.magenta = "#a9b665" -- Function, Class
       end,
       -- on_highlights = function(hl, c)
       -- hl.Normal = { bg = "#050508" }

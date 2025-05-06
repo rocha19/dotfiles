@@ -1,6 +1,6 @@
 return {
   {
-    enabled = false,
+    enabled = true,
     "folke/flash.nvim",
     ---@type Flash.Config
     opts = {
@@ -84,7 +84,7 @@ return {
         desc = "Search for a string in your current working directory and get results live as you type, respects .gitignore",
       },
       {
-        "\\\\",
+        "\\",
         function()
           local builtin = require("telescope.builtin")
           builtin.buffers()
@@ -138,9 +138,9 @@ return {
             respect_gitignore = false,
             hidden = true,
             grouped = true,
-            previewer = false,
+            previewer = true,
             initial_mode = "normal",
-            layout_config = { height = 30, width = 80 },
+            layout_config = { height = 36, width = 120 },
           })
         end,
         desc = "Open File Browser with the path of the current buffer",
@@ -151,16 +151,18 @@ return {
       local actions = require("telescope.actions")
       local fb_actions = require("telescope").extensions.file_browser.actions
 
-      opts.defaults = vim.tbl_deep_extend("force", opts.defaults, {
-        wrap_results = true,
-        layout_strategy = "horizontal",
-        layout_config = { prompt_position = "top" },
-        sorting_strategy = "ascending",
-        winblend = 0,
-        mappings = {
-          n = {},
-        },
-      })
+      -- opts.defaults = vim.tbl_deep_extend("force", opts.defaults, {
+      --   wrap_results = true,
+      --   layout_strategy = "horizontal",
+      --   layout_config = { prompt_position = "top" },
+      --   sorting_strategy = "ascending",
+      --   winblend = 0,
+      --   mappings = {
+      --     n = {
+      --       ["q"] = actions.close,
+      --     },
+      --   },
+      -- })
       opts.pickers = {
         diagnostics = {
           theme = "ivy",
@@ -175,6 +177,7 @@ return {
           theme = "dropdown",
           -- disables netrw and use telescope-file-browser in its place
           hijack_netrw = true,
+          select_buffer = true,
           mappings = {
             -- your custom insert mode mappings
             ["n"] = {

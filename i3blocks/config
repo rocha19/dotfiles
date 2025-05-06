@@ -1,0 +1,81 @@
+# Configuração i3blocks  
+
+# Definições de cores (para reutilização)
+[global]
+color_good=#509A7B
+color_degraded=#F1FA8C
+color_bad=#bF5555
+interval=1
+
+# Ordem dos blocos (você pode personalizar essa lista)
+# Aqui estão os blocos que serão exibidos na barra
+[load]
+label= 
+command=uptime | awk -F'[a-z]:' '{ print $2 }' | awk '{print $1}'
+interval=5
+color=#9f9f9f # #b08500
+
+[cpu_temperature]
+label= 
+command=sensors | grep 'Package id 0:' | awk '{print $4}' | sed 's/+//g'
+interval=5
+color=#9f9f9f # #a12f2c
+
+# mhwd -li
+# nvidia-smi
+# sudo pacman -S nvidia-utils
+# sudo mhwd -a pci nonfree 0300
+# [gpu_temperature]
+# label= 
+# command=nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader,nounits
+# interval=5
+# color=#99f86c
+
+[cpu_usage]
+label= 
+command=top -bn1 | grep "%CPU(s):" | awk '{print 100 - $8"%"}'
+interval=5
+color=#9f9f9f # #ffb86c
+
+[memory]
+label= 
+command=free -h | grep Mem | awk '{print $3 "/" $2}'
+interval=5
+color=#9f9f9f # #ff79c6
+
+# [ethernet]
+# label= 
+# # command=ip addr show enp2s0 | grep 'inet ' | awk '{print $2}' || echo "offline"
+# command=ifconfig enp2s0 | grep 'inet ' | awk '{print $2}' || echo "offline"
+# interval=10
+# color=#9f9f9f # #00bfae
+# color_down=#af4444
+
+
+# Exemplos de outros blocos descomentados:
+
+# [wireless]
+# label=󰤨 
+# command=iwgetid -r || echo "Disconnected"
+# interval=10
+# color=#9f9f9f # #289c93
+
+# [bluetooth]
+# label= 
+# command=bluetoothctl info | grep "Device" || echo "Not Available"
+# interval=30
+# color=#9f9f9f # #8be9fd
+
+# [battery]
+# label= 
+# command=acpi -b | awk '{print $4}' | sed 's/,//'
+# interval=30
+# color=#9f9f9f # #819400
+
+# Bloco de tempo
+[time]
+label= 
+command=date '+%b %d at %H:%M'
+interval=60
+color=#9f9f9f # #2587cc
+
